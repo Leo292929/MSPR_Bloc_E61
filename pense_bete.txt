@@ -1,0 +1,112 @@
+addapter a la localisation: different model pour chaque loc ou le mm mais modifier
+
+loss pour les donnees unbalance
+
+
+
+model: 
+ResNet
+mlp
+w/ attention mechanism 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A faire:
+
+
+modele
+une photo avec les metadonnées ==> une espece avec les infos
+			       ==> enregistrement dans la base de données
+
+
+site
+possibilite de prendre une photo avec resultat
+
+
+
+
+Api/bdd/back
+
+
+
+
+
+
+
+
+data cleaning
+==> passer toutes les données dans le bon format (jpg, grayscale)
+==> toutes de la meme taille (1:1)
+==> toutes de la meme qualité (256*256)
+
+
+
+
+
+jdb:
+
+18/12 am
+
+decouverte du sujet
+fct datacleanning
+
+
+
+18/12 pm
+
+suite datacleannig (normalization)
+
+
+
+
+
+modele:
+
+
+importe les immages:
+
+un tableau avec autant de ligne que d'image, le premier element est la classe et le deuxieme l'image au format tableau de numpy
+
+
+
+a faire ==> encoding chaque label est representer par une liste de type[0,...0,1,0...,0]
+une fois que tout est encoder, il faut creer 2 liste de tenseur avec les label et les image au meme index
+
+
+
+reregarder la normalisation pour le wildframe
+
+
+ne pas oublier de normaliser avant l'inferance avec les valeur statistique du training set
+
+
+
+
+
+
+
+
+

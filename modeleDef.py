@@ -11,7 +11,7 @@ def accuracy(outputs, labels): #output et label sont des liste de tenseur et de 
 class ImageClassificationBase(nn.Module):
 
     def result(self,tenseur):
-        return resultat
+        pass
 
     def trainning(self , n_epoch , lr , train_data , val_data , opt_function = torch.optim.SGD):
 

@@ -1,5 +1,9 @@
 from torch import tensor
 import random
+import numpy as np
+from PIL import Image
+
+
 
 def one_hot_max(prediction_t):
     oh_prediction = [0.]*len(prediction_t)
@@ -23,3 +27,5 @@ def train_test(list_label_t,list_image_t):
     train_list_label_t , test_list_label_t = list_label_t[50:] , list_label_t[:50]
     train_list_image_t , test_list_image_t = list_image_t[50:] , list_image_t[:50]
     return train_list_label_t , test_list_label_t , train_list_image_t , test_list_image_t
+
+

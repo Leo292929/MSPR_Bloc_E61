@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 pense_bete.txt
+test.py

@@ -6,9 +6,9 @@ def result2Info(resultat):
 
     mydb = mysql.connector.connect(
         host="localhost",
-        user="yourusername",
-        password="yourpassword",
-        database="mydatabase"
+        user="root",
+        password="root",
+        database="MSPR61"
     )
 
     mycursor = mydb.cursor()

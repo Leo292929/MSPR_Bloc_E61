@@ -1,5 +1,5 @@
 from load import load
-from modele import function_modele
+from modeleDef import function_modele
 from torch import nn,tensor
 import random
 from fun import *

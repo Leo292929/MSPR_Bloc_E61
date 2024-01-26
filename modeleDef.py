@@ -9,13 +9,44 @@ def accuracy(outputs, labels): #output et label sont des liste de tenseur et de 
 
 
 class ImageClassificationBase(nn.Module):
+
+    def result(self,tenseur):
+        return resultat
+
+    def trainning(self , n_epoch , lr , train_data , val_data , opt_function = torch.optim.SGD):
+
+        history = []
+        optimizer = opt_function(self.parameters() , lr)
+
+        for epoch in range(n_epoch):
+            self.train()
+
+            loss = self.training_step( train_data )
+            
+            loss.backward()
+            optimizer.step()
+            optimizer.zero_grad()
+
+            result = self.evaluate(val_data)
+            result['train_loss'] = loss.item()
+            self.epoch_end(epoch, result)
+            history.append(result)
+
+        return history
+
     def training_step(self, batch):
         images, labels = batch 
         out = self(images)                  # Generate predictions
         loss = F.cross_entropy(out, labels) # Calculate loss
         return loss
     
-    def validation_step(self, batch):
+    def evaluate(self,val_data):
+        self.model.eval()#pas oublier le evaal() qui desactive le dropout et le calcul de gradient
+        outputs = [self.model.validation_step(batch) for batch in val_data]
+        self.model.train() #on oublie pas de la repasser en mode train
+        return self.model.validation_epoch_end(outputs)
+
+    def validation_step(self, batch):# apppeler lors d'evaluate
         with torch.no_grad():  #permet d'avoir des tenseurs independant des tenseurs de base pour ne pas calculer le gradient
             images, labels = batch 
             out = self(images)                    # Generate predictions
@@ -23,16 +54,19 @@ class ImageClassificationBase(nn.Module):
             acc = accuracy(out, labels)           # Calculate accuracy
             return {'val_loss': loss, 'val_acc': acc}
         
-    def validation_epoch_end(self, outputs):
+    def validation_epoch_end(self, outputs):# apppeler lors d'evaluate
         batch_losses = [x['val_loss'] for x in outputs]
         epoch_loss = torch.stack(batch_losses).mean()   # Combine losses
         batch_accs = [x['val_acc'] for x in outputs]
         epoch_acc = torch.stack(batch_accs).mean()      # Combine accuracies
         return {'val_loss': epoch_loss.item(), 'val_acc': epoch_acc.item()}
     
-    def epoch_end(self, epoch, result):
+    def epoch_end(self, epoch, result):#appeler lors de calidation epoch end
         print("Epoch [{}], train_loss: {:.4f}, val_loss: {:.4f}, val_acc: {:.4f}".format(
             epoch, result['train_loss'], result['val_loss'], result['val_acc']))
+
+
+
 
 def conv_block(in_channels, out_channels,kernel_size=3, pool=False):
     layers = [nn.Conv2d(in_channels, out_channels, kernel_size=kernel_size, padding=1), #on applique le kernel(cf pense bete kernel) et le padding (stride de 1 par defaut)
@@ -73,9 +107,9 @@ class ResNet20(ImageClassificationBase):
                                             nn.Flatten(), 
                                             nn.Linear(512, num_classes))
             
-    def forward(self, xb):
-        out = self.conv0(xb)
-        out = self.res1(out) + self.conv1(out)
+    def forward(self, xb):# la fonction forward est appelée automatiquement lors de l'appel de out = model(data)
+        out = self.conv0(xb)#                               elle utilise les bloc decrit precedement et fait passer
+        out = self.res1(out) + self.conv1(out)#             les donner au traver de maniere ordonnée
         out = self.res1(out) + self.conv1(out)
         out = self.res1(out) + self.conv1(out)
         out = self.res15(out) + self.conv15(out)
@@ -95,11 +129,6 @@ class ResNet20(ImageClassificationBase):
         return out
 
 
-def evaluate(model, val_loader):
-    model.eval()#pas oublier le evaal() qui desactive le dropout et le calcul de gradient
-    outputs = [model.validation_step(batch) for batch in val_loader]
-    model.train() #on oublie pas de la repasser en mode train
-    return model.validation_epoch_end(outputs)
 
 
 

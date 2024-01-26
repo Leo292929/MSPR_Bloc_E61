@@ -108,5 +108,5 @@ ne pas oublier de normaliser avant l'inferance avec les valeur statistique du tr
 
 
 
-
+Kernel: permet de reperer des motif en parcourant l'image avec des matrcie de la taille du kernel
 

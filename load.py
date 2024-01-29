@@ -105,7 +105,7 @@ def load(chemin_dossier):
 
 
 
-x,y,z,t = load(chemin_dossier)
+# x,y,z,t = load(chemin_dossier)
 #print(y[0])
 
 ###on a donc une fonction qui prned un dossier( organiser avec un sous dossier par classe et des donne clean) et qui renvoie

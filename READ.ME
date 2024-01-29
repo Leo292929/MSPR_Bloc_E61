@@ -2,6 +2,31 @@ MSPR E61
 POITRENAUD Romain
 FOUGEROUD Léo
 
+Installation et Configuration :
+
+    -Assurez vous de disposer de Python 3.8 et pip au minimum 
+(sinon téléchargez la dernière version du programme d'installation exécutable de Python pour Windows x86-64
+à partir de la page de téléchargements de Python.org)
+
+    -telecharger le projet, dezipper le et ouvrez le
+
+    -creer un environnement de devellopement virtuel en tappant les commandes:
+
+pip install virtualenv  
+py -m venv myproject_env
+cd .\myproject_env\Scripts\
+.\activate
+cd..
+cd..
+
+    -inporter les librairie necessaire avec:
+
+pip install -r requirement.txt
+
+
+
+
+Explication:
 
 La structure des bases de données est dans EmpreinteStructure.sql
     Creation d'une database locale avec mySQL,
@@ -22,3 +47,5 @@ Le modele, ses ses methodes et son architecture son definie dans modeleDef.py
 L'entrainement du modele est effectuer avec modelTrain.py
 
 Une fois entrainé, le modele et ses parametres sont stocker dans modeleState.pt pour pouvoir etre utilisé/exporté plus facilement
+
+

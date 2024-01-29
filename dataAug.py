@@ -76,4 +76,3 @@ def augment_data(chemin_dossier_entree,chemin_dossier_sortie,nbFichierFinal = 40
             turn+=1
 
 
-augment_data("Mammiferes","Mammiferes_augmente")

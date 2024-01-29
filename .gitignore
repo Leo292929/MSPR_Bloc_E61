@@ -161,3 +161,13 @@ cython_debug/
 
 pense_bete.txt
 test.py
+
+Mammiferes/
+
+Mammiferes_clean/
+
+Mammiferes_augmente/
+
+test/
+
+myproject_env/

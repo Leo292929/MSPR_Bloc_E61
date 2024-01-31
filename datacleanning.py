@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 import os
 
-def creer_copie_clean(chemin_dossier_entree,chemin_dossier_sortie):
+def clean_data(chemin_dossier_entree,chemin_dossier_sortie):
     for sous_dossier in os.listdir(chemin_dossier_entree):
         num = 0
         chemin_sous_dossier = os.path.join(chemin_dossier_entree, sous_dossier)

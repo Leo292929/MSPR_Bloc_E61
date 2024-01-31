@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Empreinte(
  adresseImage varchar(255),
  datePhoto date,
  heurePhoto time,
- localisation varchar(20),
+ localisation varchar(255),
  PRIMARY KEY(idEmpreinte),
  FOREIGN KEY (idUser) REFERENCES User(idUser),
  FOREIGN KEY (idEspece) REFERENCES Espece(idEspece)

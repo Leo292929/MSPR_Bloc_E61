@@ -26,13 +26,7 @@ def loading_datas(chemin_dossier):
 
             image_array = np.array(image, dtype=np.float32)
 
-            print(image_array.shape)
-
             image_array = image_array.reshape((image_array.shape[0])*(image_array.shape[1]),1)
-
-            print(image_array.shape)
-
-            print("/n")
 
             data_brute.append((one_hot_encoder(classes,classe),image_array))
     classes_encoded = []
@@ -95,9 +89,6 @@ def to_tenseur(data,val_data,classes):
 def load(chemin_dossier):
     data_brute,classes = loading_datas(chemin_dossier)
 
-        
-
-    print(data_brute[0][1].shape)
     data,val_data = save_val_data(data_brute,classes,3)
     print(1)
     list_label_tenseur,list_image_tenseur,val_data_tenseur,classes_tenseur = to_tenseur(data,val_data,classes)
@@ -106,7 +97,6 @@ def load(chemin_dossier):
 
 
 # x,y,z,t = load(chemin_dossier)
-#print(y[0])
 
 ###on a donc une fonction qui prned un dossier( organiser avec un sous dossier par classe et des donne clean) et qui renvoie
 ###une liste avec les données pour la validation final et une liste data avec des tuple : ("le label",l'image en array numpy)

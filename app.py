@@ -1,5 +1,5 @@
 from PIL import Image
-from datacleanning import normalize_grayscale_image
+from dataCleanning import normalize_grayscale_image
 import os
 from modeleDef import ResNet20
 import torch

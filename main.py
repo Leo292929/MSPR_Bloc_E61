@@ -1,9 +1,7 @@
-from load import load
-#from modeleDef import function_modele
+from dataLoading import load
 from torch import nn,tensor
-import random
 from fun import *
-from dataCleanning import creer_copie_clean
+from dataCleanning import clean_data
 from dataAug import augment_data
 
 
@@ -23,7 +21,7 @@ if cleanData:
     chemin_dossier_entree = "Mammiferes_augmente"
     chemin_dossier_sortie = "Mammiferes_clean"
 
-    creer_copie_clean(chemin_dossier_entree,chemin_dossier_sortie)
+    clean_data(chemin_dossier_entree,chemin_dossier_sortie)
 
 
     print("data cleannée")

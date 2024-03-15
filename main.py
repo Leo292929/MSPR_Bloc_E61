@@ -8,6 +8,7 @@ from dataAug import augment_data
 augData = False
 cleanData = False
 
+
 if augData:
 
     chemin_dossier_entree = "Mammiferes"
@@ -32,7 +33,7 @@ if cleanData:
 
 
 
-list_label_t,list_image_t,val_data_t,classes_t = load("Mammiferes_clean")
+#list_label_t,list_image_t,val_data_t,classes_t = load("Mammiferes_clean")
 
 
 
@@ -41,7 +42,7 @@ list_label_t,list_image_t,val_data_t,classes_t = load("Mammiferes_clean")
 nb_epoch = 1
 lr = 0.01
 gamma = 1
-nb_classe = len(classes_t)
+#nb_classe = len(classes_t)
 
 
 #liste sauvegardant les loss et l'accuracy pour pouvoir analyser l'evolution

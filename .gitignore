@@ -161,6 +161,7 @@ cython_debug/
 
 pense_bete.txt
 test.py
+dataLoading.py
 
 Mammiferes/
 Mammiferes_clean/

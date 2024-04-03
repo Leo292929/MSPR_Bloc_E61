@@ -5,6 +5,8 @@ import os
 from PIL import Image
 from itertools import islice
 from torch import tensor
+from torch import stack
+from torch import no_grad
 import warnings
 warnings.filterwarnings("ignore")
 ###loading des datas ==> un tableau avec autant de tuple que d'image, avec dans chaque tuple ("le label",l'image en array numpy)
@@ -29,14 +31,16 @@ def loading_datas(chemin_dossier):
 
             try:
                 image_array = np.transpose(image_array,(2, 0, 1))
-                set_image.append(image_array.tolist())
-                set_label.append(label)
+                set_image.append(tensor(image_array.tolist()))
+                set_label.append((label))
+                
             except:
                 print(image_array.shape)
                 print(fichier)     
 
         label+=1           
-
+    
+    print(set_image[1],set_label[1])
 
     return set_image,set_label
 
@@ -59,7 +63,7 @@ def save_val_data(set_image,set_label,nb_save):
 def merge_custom(set_image,set_label):
     set_train = []
     for e, f in zip(set_image,set_label):
-        set_train.append((e,f))
+        set_train.append([e,f])
     return set_train
 
 
@@ -104,18 +108,26 @@ def to_tenseur(data,val_data):
 def load(chemin_dossier):
     set_image,set_label = loading_datas(chemin_dossier)
     for image in set_image:
-        for channel in image:
-            for ligne in channel:
-                for colonne in ligne:
-                    colonne/=255.
-
+        with no_grad():
+            image/=255.
+    
+    print(set_image[1],set_label[1])
     set_image,set_label,val_data = save_val_data(set_image,set_label,5)
     set_train = merge_custom(set_image,set_label)
     print(type(set_train))
     print(type(set_train[0]))
     print(type(set_train[0][0]))
-    set_train[0] = [tensor(set_train[0][0]),set_train[0][1]]
-    set_train[0]=tensor(set_train[0])
+    print(type(set_train[0][1]))
+    set_train[0] = [tensor(set_train[0][0]),tensor(set_train[0][1])]
+    print("----------------")
+    print(type(set_train[0]))
+    print(type(set_train[0][0]))
+    print(type(set_train[0][1]))
+    set_train[0]=stack(set_train[0])
+    print("----------------")
+    print(type(set_train[0]))
+    print(type(set_train[0][0]))
+    print(type(set_train[0][1]))
     val_data = tensor(val_data)
     print(set_train[0])
  #reste a fusionner set_label et set_image et a tout passer en tenseur

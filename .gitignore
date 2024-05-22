@@ -161,13 +161,14 @@ cython_debug/
 
 pense_bete.txt
 test.py
+dataLoading.py
 
 Mammiferes/
-
 Mammiferes_clean/
-
+Mammiferes_clean_nb/
 Mammiferes_augmente/
 
 
-
 myproject_env/
+
+.vscode/

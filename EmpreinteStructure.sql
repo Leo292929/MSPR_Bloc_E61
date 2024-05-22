@@ -22,7 +22,8 @@ CREATE TABLE  IF NOT EXISTS Utilisateur(
  idUser int NOT NULL AUTO_INCREMENT,
  nomUser varchar(255),
  courielUser varchar(255),
- mdpUser varchar(255),
+ hashedMdpUser varchar(255),
+ salt varchar(255)
  PRIMARY KEY(idUser)
  );
  

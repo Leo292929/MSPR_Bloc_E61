@@ -35,17 +35,17 @@ La structure des bases de données est dans EmpreinteStructure.sql
         -Utilisateur qui recense les donnees des utilisateur. Cette table a ete juge necessaire dans le cas ou un utilisateur mettrait systematiquement des photos non permtinante.
         -Especes qui recense les infos supplementaires sur les 13 especes. 
 
-La connexion et les interactions avec la base de données est gérée par interactionSQL.Py
-    result2Info permet de renvoyer les infos supplementaires sur une especes stockés dans la bdd
-    insertIn2Db permet de stocker les images prises par les utilisateur dans las bdd avec les metadonne ou les info de l'ordinateur
+La connexion et les interactions avec la base de données sont gérées par interactionSQL.Py
+    result2Info permet de renvoyer les infos supplementaires sur une espece stockés dans la bdd
+    insertIn2Db permet de stocker les images prises par les utilisateurs dans la bdd avec les metadonnes ou les infos de l'ordinateur
 
-Le nettoyage des données est effectuer par datacleannig.Py
-    Les photos sont rennomées, converties en jpeg, croppées pour les avoir troutes en format 256*256, converties en nuance de gris avec les variations de couleur normalisées
+Le nettoyage des données est effectué par dataCleannig.Py
+    Les photos sont rennomées, converties en jpeg, croppées pour les avoir toutes en format 256*256, converties en nuance de gris avec les variations de couleur normalisées
 
-Le modele, ses ses methodes et son architecture son definie dans modeleDef.py
+Le modele, ses methodes et son architecture sont definies dans modeleDef.py
 
-L'entrainement du modele est effectuer avec modelTrain.py
+L'entrainement du modele est effecté avec modelTrain.py
 
-Une fois entrainé, le modele et ses parametres sont stocker dans modeleState.pt pour pouvoir etre utilisé/exporté plus facilement
+Une fois entrainé, le modele et ses parametres sont stocké dans modeleState.pt pour pouvoir etre utilisé/exporté plus facilement
 
 
